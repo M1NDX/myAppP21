@@ -1,0 +1,44 @@
+
+@host = http://localhost:3000
+
+###
+
+GET {{host}}
+
+###
+GET  {{host}}/alumnos
+###
+GET  {{host}}/alumnos?nombre=Juanito
+###
+GET  {{host}}/alumnos/3
+
+###
+POST  {{host}}/alumnos/
+Content-Type: application/json
+x-auth: sfasfkalfk-234
+
+{
+    "nombre": "Test3",
+    "calificacion": 10
+}
+
+
+###
+
+
+GET https://json.extendsclass.com/bin/97d6d896fb7c
+Security-key:"test"
+
+###
+https://api.npoint.io/f4dd90e3a82ad32d53f2
+
+###
+POST https://api.npoint.io/f4dd90e3a82ad32d53f2
+Content-Type: application/json
+
+[{
+    "test":"hola"
+}, {
+    "test2":"hola2"
+}]
+
