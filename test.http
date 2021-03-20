@@ -40,5 +40,7 @@ Content-Type: application/json
     "test":"hola"
 }, {
     "test2":"hola2"
+}, {
+    "test2":"hola3"
 }]
 

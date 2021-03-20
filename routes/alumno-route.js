@@ -64,8 +64,7 @@ router.post('/', estaAutenticado, (req,res)=>{
     res.status(400).send({error: "faltan datos"})
 })
 
-//PUT /:id  
-
+//PUT /:id     
 //actualizar alumno
 //middleware valide el body 
 
