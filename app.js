@@ -1,26 +1,23 @@
 const express = require("express");
 const productRouter = require('./routes/product-route')
 const alumnoRouter = require('./routes/alumno-route')
-
+const {log, test} = require('./middlewares/logs')
 //express.json()
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req,res)=>{
-    res.send("Hola mundo!")
-})
+// app.get('/', (req,res)=>{
+//     res.send("Hola mundo!")
+// })
 
-let log = (req,res,next)=>{
-    console.log(req.method);
-    console.log(req.url);
-    next()
-}
-
-app.use(log)
+app.use(log, test)
+app.use(express.static(__dirname+'/public'))
+app.use('/student', express.static(__dirname+'/public/alumnos'))
 app.use(express.json())
-app.use('/products', productRouter)
-app.use('/alumnos', alumnoRouter)
+app.use('/api/products', productRouter)
+app.use('/api/alumnos', alumnoRouter)
+
 
 
 app.listen(port, ()=>console.log("Ejecutando en puerto "+port))
