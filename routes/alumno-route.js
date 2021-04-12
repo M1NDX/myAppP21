@@ -48,6 +48,7 @@ function estaAutenticado(req,res,next){
 //asegurar que tenga el header xauth
 router.post('/', estaAutenticado, (req,res)=>{
     console.log(req.body);
+    //req.uid
     
     let {nombre, calificacion } = req.body;
 
