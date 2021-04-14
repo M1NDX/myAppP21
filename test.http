@@ -44,3 +44,5 @@ Content-Type: application/json
     "test2":"hola3"
 }]
 
+###
+GET {{host}}/api/alumnos

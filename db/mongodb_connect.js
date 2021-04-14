@@ -1,4 +1,4 @@
-let mongoose = require('mongoose');
+let mongoose = require('mongoose'); //ODM  = object data model
 let config = require('./config');
 
 console.log(config.getUrl());

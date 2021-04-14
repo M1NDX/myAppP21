@@ -1,11 +1,12 @@
 const router = require('express').Router()
 const fs = require('fs')
 const path = require('path')
+const Alumno = require('../models/Alumno')
 
 let alumnos = require("../alumnos.json")
 
-router.get('/', (req,res)=>{
-    let lista = alumnos.slice();
+router.get('/', async (req,res)=>{
+    let lista = await Alumno.getAlumnos();      //alumnos.slice();
     console.log(req.query);   //  /alumnos?nombre=Juan%20López&edad=20
     let {nombre} = req.query; // {prop1:asdfsdf, pro2: sfd , nombre:'test'}   
     if(nombre){
