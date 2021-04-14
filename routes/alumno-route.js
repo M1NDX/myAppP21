@@ -6,28 +6,37 @@ const Alumno = require('../models/Alumno')
 let alumnos = require("../alumnos.json")
 
 router.get('/', async (req,res)=>{
-    let lista = await Alumno.getAlumnos();      //alumnos.slice();
     console.log(req.query);   //  /alumnos?nombre=Juan%20López&edad=20
-    let {nombre} = req.query; // {prop1:asdfsdf, pro2: sfd , nombre:'test'}   
-    if(nombre){
-        lista = lista.filter(a => a.nombre == nombre)
-        if(lista.length > 0)
-            res.send(lista)
-        else   
-            res.status(404).send({error: "no existe"})
+    let {nombre, rol, correo} = req.query; // {prop1:asdfsdf, pro2: sfd , nombre:'test'}   
+    
+    let filtro = {}
+    if(nombre)
+        filtro.nombre = new RegExp(nombre,'i')
+    if(rol)
+        filtro.rol = rol;
+    if(correo)
+        filtro.correo = new RegExp(correo,'i')
+ 
 
-        return;
-    }
+    let lista = await Alumno.getAlumnos(filtro);      //alumnos.slice();
+    //  if(nombre){
+    //     lista = lista.filter(a => a.nombre == nombre)
+    //     if(lista.length > 0)
+    //         res.send(lista)
+    //     else   
+    //         res.status(404).send({error: "no existe"})
+
+    //     return;
+    // }
     res.send(lista)
 
 })
 
 // /alumnos
 
-router.get('/:id', (req,res)=>{
- let n = Number(req.params.id);
- res.send(alumnos[n])
-
+router.get('/:email', async (req,res)=>{
+    let doc = await Alumno.getAlumno(req.params.email)
+    res.send(doc)
 })
 
 router.get('/nombre/:nombre', (req,res)=>{
@@ -47,17 +56,21 @@ function estaAutenticado(req,res,next){
 }
 
 //asegurar que tenga el header xauth
-router.post('/', estaAutenticado, (req,res)=>{
+router.post('/', estaAutenticado, async (req,res)=>{
     console.log(req.body);
     //req.uid
-    
-    let {nombre, calificacion } = req.body;
+    console.log(req.body);
+    let {nombre, calificacion, correo, carreras, password } = req.body;
 
-    if(nombre && calificacion){
-        alumnos.push({nombre, calificacion})
-        fs.writeFileSync(path.join(__dirname,'../alumnos.json'), JSON.stringify(alumnos))
-        res.status(201).send()
+    if(nombre && calificacion && correo && carreras && password){
+        // alumnos.push({nombre, calificacion})
+        // fs.writeFileSync(path.join(__dirname,'../alumnos.json'), JSON.stringify(alumnos))
+        // res.status(201).send()
+        // return;
+        let doc = await Alumno.guardarDatos({nombre, calificacion, correo, carreras, password})
+        res.status(201).send(doc)
         return;
+
     }
 
     res.status(400).send({error: "faltan datos"})

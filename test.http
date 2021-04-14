@@ -13,13 +13,16 @@ GET  {{host}}/alumnos?nombre=Juanito
 GET  {{host}}/alumnos/3
 
 ###
-POST  {{host}}/alumnos/
+POST  {{host}}/api/alumnos/
 Content-Type: application/json
 x-auth: sfasfkalfk-234
 
 {
     "nombre": "Test3",
-    "calificacion": 10
+    "calificacion": 10,
+    "carreras":["ISC"],
+    "correo":"t4@t",
+    "password":"123"
 }
 
 

@@ -26,6 +26,7 @@ let alumnoSchema = mongoose.Schema({
     },
     rol: {
         type:String,
+        default: 'USER',
         enum:['USER','ADMIN'],
         required:true
     }
@@ -33,8 +34,8 @@ let alumnoSchema = mongoose.Schema({
 
 
 
-alumnoSchema.statics.getAlumnos =  async ()=>{
-    let docs = await Alumno.find({}, {_id:0, nombre:1, carreras:1, rol:1, correo:1} );
+alumnoSchema.statics.getAlumnos =  async (filtro)=>{
+    let docs = await Alumno.find(filtro, {_id:0, nombre:1, carreras:1, rol:1, correo:1} );
     console.log(docs);
     return docs;
 }
@@ -43,8 +44,14 @@ alumnoSchema.statics.guardarDatos = async function(newUser){
     let alumno = new Alumno(newUser);
     let doc = await alumno.save();
     console.log(doc);
-    let docs =  await getAlumnos()
+    //let docs =  await getAlumnos()
     //mostrarAlumnos();
+    return doc;
+}
+
+alumnoSchema.statics.getAlumno = async correo => {
+    let doc = await Alumno.findOne({correo})
+    //let doc = await Alumno.findById(id)
     return doc;
 }
 
