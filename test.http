@@ -6,7 +6,7 @@
 GET {{host}}
 
 ###
-GET  {{host}}/alumnos
+GET  {{host}}/api/alumnos
 ###
 GET  {{host}}/alumnos?nombre=Juanito
 ###
@@ -24,6 +24,19 @@ x-auth: sfasfkalfk-234
     "correo":"t4@t",
     "password":"123"
 }
+
+###
+POST {{host}}/api/products
+Content-Type: application/json
+
+{
+    "nombre": "test",
+    "precio": 2334,
+    "clave": "asdfa32"
+}
+
+###
+GET {{host}}/api/products
 
 
 ###
@@ -48,4 +61,10 @@ Content-Type: application/json
 }]
 
 ###
-GET {{host}}/api/alumnos
+PUT {{host}}/api/alumnos/t4@t
+Content-Type: application/json
+
+{
+    "calificacion": 8,
+    "password": "abc"
+}

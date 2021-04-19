@@ -42,10 +42,27 @@ alumnoSchema.statics.getAlumnos =  async (filtro)=>{
 
 alumnoSchema.statics.guardarDatos = async function(newUser){
     let alumno = new Alumno(newUser);
-    let doc = await alumno.save();
-    console.log(doc);
+    try{
+        let doc = await alumno.save();
+        console.log(doc);
+        return doc;
+    }catch(e){
+        console.log("Error al guardar" ,e.code);
+        // throw e;
+        return {error: 'Usuario repetido'};
+    }
+    
+   
     //let docs =  await getAlumnos()
     //mostrarAlumnos();
+    //return doc;
+}
+
+alumnoSchema.statics.updateDatos = async function(correo, datos ){
+    let doc = await Alumno.findOneAndUpdate(
+           {correo},
+           {$set: datos },
+           {new: true, useFindAndModify: false} );
     return doc;
 }
 
@@ -60,3 +77,11 @@ let Alumno = mongoose.model('alumno', alumnoSchema);
 
 //guardarDatos({nombre: 'test', calificacion: 8.5, carreras: ['ISC','ISI'], correo:'t@t', password:'test', rol:'ADMIN'})
 module.exports = Alumno;
+
+
+async function updateAlumno(){
+   let doc = await Alumno.updateDatos('t4@t', {nombre: 'Juan'}) 
+   console.log(doc);
+}
+
+//updateAlumno()

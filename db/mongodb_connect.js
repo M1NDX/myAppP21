@@ -6,7 +6,7 @@ console.log(config.getUrl());
 mongoose.connect(config.getUrl(), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex:true,
+    useCreateIndex:true,  // unique
 }).then(()=>console.log("Conectado a la base de datos"))
   .catch((err)=>console.log("no conectado", err))
 

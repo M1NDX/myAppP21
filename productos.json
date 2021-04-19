@@ -2,16 +2,16 @@
     {
         "nombre": "Mouse",
         "precio": 100.00,
-        "id": "M34859"
+        "clave": "M34859"
     },
     {
         "nombre": "Laptop",
         "precio": 15500.00,
-        "id": "M348sf"
+        "clave": "M348sf"
     },
     {
         "nombre": "Laptop HP",
         "precio": 18000.00,
-        "id": "M348345"
+        "clave": "M348345"
     }
 ]

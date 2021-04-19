@@ -68,13 +68,23 @@ router.post('/', estaAutenticado, async (req,res)=>{
         // res.status(201).send()
         // return;
         let doc = await Alumno.guardarDatos({nombre, calificacion, correo, carreras, password})
-        res.status(201).send(doc)
+        if(doc && !doc.error ){
+            res.status(201).send(doc)
+        }else{
+            res.status(400).send(doc)
+        }
         return;
-
     }
 
     res.status(400).send({error: "faltan datos"})
 })
+
+router.put('/:email', async (req,res)=>{
+    let doc = await Alumno.updateDatos(req.params.email, req.body);
+    res.send(doc)
+})
+
+
 
 //PUT /:id     
 //actualizar alumno
