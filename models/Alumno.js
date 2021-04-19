@@ -24,6 +24,10 @@ let alumnoSchema = mongoose.Schema({
         type:String,
         required: true
     },
+    productos: {
+        type:[String],
+        ref: 'Product'
+    },
     rol: {
         type:String,
         default: 'USER',

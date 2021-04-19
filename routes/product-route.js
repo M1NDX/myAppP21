@@ -45,3 +45,8 @@ router.post('/', async (req,res)=>{
 
 
 module.exports = router;
+
+// ! EJERCICIO OPCIONAL
+// * HACER UN UPDATE DE PRODUCTO
+    // *validar primero que no exista otra clave igual
+// * ATRAPAR ERRORES AL GUARDAR Y ACTUALIZAR
