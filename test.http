@@ -7,10 +7,12 @@ GET {{host}}
 
 ###
 GET  {{host}}/api/alumnos
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3JyZW8iOiJ0NUB0IiwiaWF0IjoxNjE5MDI3NTg2LCJleHAiOjE2MTkwMjc3MDZ9.lL6lQnlexjieCmQ33niE5aiJrkPMOyv8Gx1Ud0hFb50
+
 ###
-GET  {{host}}/alumnos?nombre=Juanito
+GET  {{host}}/api/alumnos?nombre=Juanito
 ###
-GET  {{host}}/alumnos/3
+GET  {{host}}/api/alumnos/t4@t
 
 ###
 POST  {{host}}/api/alumnos/
@@ -21,8 +23,17 @@ x-auth: sfasfkalfk-234
     "nombre": "Test3",
     "calificacion": 10,
     "carreras":["ISC"],
-    "correo":"t4@t",
+    "correo":"t5@t",
     "password":"123"
+}
+
+###
+POST  {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+    "correo": "t5@t",
+    "password": "123"
 }
 
 ###
@@ -34,6 +45,9 @@ Content-Type: application/json
     "precio": 2334,
     "clave": "asdfa32"
 }
+
+###
+
 
 ###
 GET {{host}}/api/products

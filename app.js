@@ -2,6 +2,7 @@ const express = require("express");
 const productRouter = require('./routes/product-route')
 const alumnoRouter = require('./routes/alumno-route')
 const {log, test} = require('./middlewares/logs')
+const authRouter = require('./routes/auth-route')
 //express.json()
 
 const app = express();
@@ -17,6 +18,7 @@ app.use('/student', express.static(__dirname+'/public/alumnos'))
 app.use(express.json())
 app.use('/api/products', productRouter)
 app.use('/api/alumnos', alumnoRouter)
+app.use('/api/auth', authRouter)
 
 
 

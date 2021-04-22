@@ -44,6 +44,7 @@ alumnoSchema.statics.getAlumnos =  async (filtro)=>{
     return docs;
 }
 
+
 alumnoSchema.statics.guardarDatos = async function(newUser){
     let alumno = new Alumno(newUser);
     try{
