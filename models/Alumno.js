@@ -94,4 +94,5 @@ async function updateAlumno(){
    console.log(doc);
 }
 
+
 //updateAlumno()
