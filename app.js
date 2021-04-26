@@ -6,7 +6,8 @@ const authRouter = require('./routes/auth-route')
 //express.json()
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+             
 
 // app.get('/', (req,res)=>{
 //     res.send("Hola mundo!")
@@ -24,10 +25,3 @@ app.use('/api/auth', authRouter)
 
 app.listen(port, ()=>console.log("Ejecutando en puerto "+port))
 
-// ! JSON productos  nombre, precio, id
-// ! get /products/:id   product not found
-// ! /products   todos o filtros  ?min =10&max =20  ?min=10  ?max=20
-
-
-// ! leer header
-// ! leer 

@@ -13,7 +13,7 @@ router.post('/login', validaciones.validarLogin, async (req,res)=>{
          //comparar el password con el hash de la base de datos
         if(bcrypt.compareSync(req.body.password, alumno.password)){
             //generación del token
-            let token= jwt.sign({correo: alumno.correo},'DASWP21', {expiresIn: 60*2})
+            let token= jwt.sign({correo: alumno.correo},'DASWP21', {expiresIn: '1h'})
             res.send({token: token})
         }else{
             res.status(401).send({error: "password incorrecto"})
