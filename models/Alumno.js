@@ -42,7 +42,7 @@ alumnoSchema.statics.getAlumnos =  async (filtro)=>{
     let docs = await Alumno
                     .find(filtro, {_id:0, nombre:1, carreras:1, rol:1, correo:1} )
                     .sort({nombre: -1})
-                   //.skip(5)
+                    .skip(5)
                    // .limit(Infinity)
                     
     console.log(docs);
