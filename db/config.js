@@ -1,4 +1,7 @@
- module.exports = {
+console.log(process.env.DB_USER);
+console.log(process.env.DB_PWD);
+
+module.exports = {
     db_user: process.env.DB_USER,
     password: process.env.DB_PWD,
     db_name: 'mydb',
