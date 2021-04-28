@@ -7,8 +7,7 @@ GET {{host}}
 
 ###
 GET  {{host}}/api/alumnos
-x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3JyZW8iOiJ0NUB0IiwiaWF0IjoxNjE5NDU0NTU5LCJleHAiOjE2MTk0NTgxNTl9.ryiEc3-Cygc-HYZe85nM4cqQ2ygs28obLmz2ZUmQ94k
-
+x-auth: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjb3JyZW8iOiJ0NUB0IiwiaWF0IjoxNjE5NjI5NDI0LCJleHAiOjE2MTk2MzMwMjR9.f-x2bhdzgmnKO6hY8XEHpu1FGJJ81UQw-ks_HhoZDN8
 ###
 GET  {{host}}/api/alumnos?nombre=Juanito
 ###

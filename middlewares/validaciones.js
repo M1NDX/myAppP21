@@ -22,6 +22,11 @@ function validarBody(req, res, next) {
 function estaAutenticado(req,res,next){
 
     let token =  req.get('x-auth')
+    console.log("token cookie",  req.cookies.token);
+    console.log(req.signedCookies.tokenS);
+
+    token = token? token : req.cookies.token;
+
 
     if(token){
         jwt.verify(token, 'DASWP21', (err, decoded)=>{

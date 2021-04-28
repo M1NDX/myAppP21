@@ -21,8 +21,47 @@
         </p>
     </div>
 
+    <div class="container">
+      <form action="/api/auth/login" method="POST" >
+
+        <div class="form-group">
+          <label for="">correo</label>
+          <input type="text"
+            class="form-control" name="correo" id="correo"  aria-describedby="helpId" placeholder="">
+        </div>
+  
+        <div class="form-group">
+          <label for="">password</label>
+          <input type="password"
+            class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="">
+        </div>
+  
+        <button type="submit" class="btn btn-primary">Enviar</button>
+     </form>
+    </div>
+
     <img src="/images/web.png" alt="">
-      
+    
+    <script>
+      function login() {
+        console.log("login");
+        event.preventDefault()
+
+        correo = document.querySelector("#correo").value;
+        password = document.querySelector("#password").value;
+
+        fetch('/api/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({correo, password})
+          }
+        ).then(resp => resp.json())
+         .then(datos => console.log(datos))
+      }
+
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
